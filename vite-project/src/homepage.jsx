@@ -10,7 +10,12 @@ const LoginRegister = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-box">
+      {} 
+      <header className="app-header">
+        <h1>Mishkat Messaging App</h1>
+      </header>
+
+      <div className={`auth-box ${isLogin ? 'login-mode' : 'register-mode'}`}>
         <h2>{isLogin ? 'Login' : 'Register'}</h2>
         <form>
           {!isLogin && (
