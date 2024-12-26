@@ -18,7 +18,7 @@ const LoginRegister = () => {
       <div className={`auth-box ${isLogin ? 'login-mode' : 'register-mode'}`}>
         <h2>{isLogin ? 'Login' : 'Register'}</h2>
 
-        <form action=  {isLogin ? "/login" : "/register"} method='POST'>
+        <form action=  {isLogin ? "http://localhost:4000/login" : "http://localhost:4000/register"} method='POST'>
           {!isLogin && (
             <div className="input-group">
               <label htmlFor="name">Name</label>
