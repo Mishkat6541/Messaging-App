@@ -12,3 +12,14 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT} `);
 
 });
+
+app.get("/register", (req,res) => {
+    res.send("Hello");
+
+});
+
+
+app.get("/login", (req,res) => {
+    res.send("Hello");
+
+});
