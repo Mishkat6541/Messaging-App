@@ -2,10 +2,44 @@ import './style.css';
 import React, { useState } from 'react';
 
 const LoginRegister = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true); 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState(''); 
+  const [message, setMessage] = useState('');
 
   const toggleForm = () => {
-    setIsLogin(!isLogin);
+    setIsLogin(!isLogin); 
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+
+    const url = isLogin ? 'http://localhost:4000/login' : 'http://localhost:4000/register';
+    const body = isLogin
+      ? { email, password }
+      : { name, email, password };
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setMessage(data.message || 'Welcome!');
+      if (!isLogin) {
+        window.location.href = '/dashboard.html';
+      } else {
+        window.location.href = '/dashboard.html';
+      }
+    } else {
+      setMessage(data.message || 'Something went wrong');
+    }
   };
 
   return (
@@ -17,42 +51,48 @@ const LoginRegister = () => {
       <div className={`auth-box ${isLogin ? 'login-mode' : 'register-mode'}`}>
         <h2>{isLogin ? 'Login' : 'Register'}</h2>
 
-        <form
-          action={isLogin ? "http://localhost:4000/login" : "http://localhost:4000/register"}
-          method="POST"
-        >
+        <form onSubmit={handleSubmit}>
           {!isLogin && (
             <div className="input-group">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
                 id="name"
-                name="name" // Corrected the name to 'name'
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your name"
                 required
               />
             </div>
           )}
+
           <div className="input-group">
             <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
-              name="email" // Corrected the name to 'email'
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
             />
           </div>
+
           <div className="input-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
-              name="password" // Correctly named 'password'
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               required
             />
           </div>
+
           <button type="submit" className="btn">
             {isLogin ? 'Login' : 'Register'}
           </button>
@@ -64,6 +104,8 @@ const LoginRegister = () => {
             {isLogin ? ' Register here' : ' Login here'}
           </span>
         </p>
+
+        {message && <p className="message">{message}</p>}
       </div>
     </div>
   );
