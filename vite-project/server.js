@@ -1,6 +1,8 @@
 import express from 'express';
 const app = express()
 import cors from 'cors';
+import path from 'path';
+import { pool } from './dbConfig.js';
 
 const PORT = process.env.PORT || 4000;
 
@@ -26,6 +28,8 @@ app.listen(PORT, () => {
 });
 
 app.post("/register", (req,res) => {
+
+    
     console.log(req.body);
     res.send(req.body);
 
