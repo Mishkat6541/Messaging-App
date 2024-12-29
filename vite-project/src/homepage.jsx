@@ -1,5 +1,8 @@
 import './style.css';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
+
+
 
 const LoginRegister = () => {
   const [isLogin, setIsLogin] = useState(true); 
@@ -8,6 +11,8 @@ const LoginRegister = () => {
   const [name, setName] = useState(''); 
   const [message, setMessage] = useState('');
 
+  const navigate = useNavigate();
+  
   const toggleForm = () => {
     setIsLogin(!isLogin); 
   };
@@ -33,9 +38,9 @@ const LoginRegister = () => {
     if (data.success) {
       setMessage(data.message || 'Welcome!');
       if (!isLogin) {
-        window.location.href = '/dashboard.html';
+        navigate('/');
       } else {
-        window.location.href = '/dashboard.html';
+        navigate('/dashboard');
       }
     } else {
       setMessage(data.message || 'Something went wrong');
