@@ -1,7 +1,11 @@
 import React from 'react';
 import "./dashboard.css";
+import { useNavigate } from 'react-router-dom'; 
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+
   return (
     <div className="dashboard">
       <header>
@@ -23,13 +27,13 @@ const Dashboard = () => {
             <button onClick={() => alert("Redirecting to settings")}>Account Settings</button>
           </li>
           <li>
-            <button onClick={() => alert("Logging out...")}>Log Out</button>
+            <button onClick={() => navigate('/') }>Log Out</button>
           </li>
         </ul>
       </section>
 
       <footer className="dashboard-footer">
-        <p>&copy; 2024 My Application</p>
+        <p>&copy; 2024 By Mishkat Mazumder </p>
       </footer>
     </div>
   );
