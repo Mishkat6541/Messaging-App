@@ -1,48 +1,191 @@
+/* Reset some basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f4f7f6; /* Light background for the entire page */
+  color: #333;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Dashboard container */
 .dashboard {
-    font-family: Arial, sans-serif;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
+  background: #ffffff;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: fadeIn 1s ease-out;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #4caf50, #81c784); /* Green gradient */
+  color: white;
+  border-radius: 10px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Dashboard sections */
+.dashboard-info, .dashboard-actions, .dashboard-messages {
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.dashboard-info h2, .dashboard-actions h3, .dashboard-messages h3 {
+  font-size: 1.6rem;
+  color: #4caf50;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Dashboard Info Section */
+.dashboard-info p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Quick actions list */
+.dashboard-actions ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dashboard-actions li {
+  margin: 10px 0;
+}
+
+.dashboard-actions button {
+  padding: 12px 20px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dashboard-actions button:hover {
+  background: #388e3c; /* Darker green on hover */
+}
+
+/* Messages section */
+.dashboard-messages {
+  background: #e8f5e9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.messages-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.message {
+  background: #a5d6a7;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 6px;
+  color: #333;
+  animation: messageFadeIn 0.8s ease-in-out;
+}
+
+.message:last-child {
+  margin-bottom: 0;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #81c784;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #66bb6a; /* Focused green */
+}
+
+button {
+  background: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background: #388e3c;
+}
+
+/* Footer */
+.dashboard-footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  padding-top: 20px;
+}
+
+.dashboard-footer p {
+  color: #4caf50;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    text-align: center;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .dashboard-info {
-    background-color: #f4f4f4;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
+}
+
+@keyframes messageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
   }
-  
-  .dashboard-actions {
-    background-color: #e9ecef;
-    padding: 20px;
-    border-radius: 8px;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  .dashboard-actions button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .dashboard-actions button:hover {
-    background-color: #0056b3;
-  }
-  
-  .dashboard-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 14px;
-    color: #555;
-  }
-  
+}
