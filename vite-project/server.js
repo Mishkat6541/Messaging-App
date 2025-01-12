@@ -60,7 +60,7 @@ app.use(
 // CORS middleware
 app.use(
   cors({
-    origin: 'http://localhost:5173', 
+    origin: 'https://messaging-app-1-isok.onrender.com/', 
     methods: ['GET', 'POST'],
     credentials: true, 
   })

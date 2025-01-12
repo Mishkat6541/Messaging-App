@@ -20,7 +20,7 @@ const LoginRegister = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); 
 
-    const url = isLogin ? 'http://localhost:4000/login' : 'http://localhost:4000/register';
+    const url = isLogin ? 'https://messaging-app-pdi8.onrender.com/login' : 'https://messaging-app-pdi8.onrender.com/register';
     const body = isLogin
       ? { email, password }
       : { name, email, password };
