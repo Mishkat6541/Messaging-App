@@ -4,11 +4,12 @@ const { Pool } = pg; // Destructure Pool from pg
 
 dotenv.config();
 
-const isProduction = process.env.NODE_ENV === 'production';
+// Use DATABASE_URL directly, no need for the condition
 const connectionString = process.env.DATABASE_URL;
 
 const pool = new Pool({
-  connectionString: isProduction ? process.env.DATABASE_URL : connectionString
+  connectionString,  // Use the connectionString directly
+  ssl: process.env.NODE_ENV === 'production' // Enable SSL in production (optional)
 });
 
 export { pool };
