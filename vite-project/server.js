@@ -4,43 +4,36 @@ import bcrypt from 'bcrypt';
 import session from 'express-session';
 import { pool } from './dbConfig.js'; 
 
-import { WebSocketServer } from 'ws';  // Correct import in ES Modules
+import { WebSocketServer } from 'ws';  
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Initialize WebSocket server
 const wss = new WebSocketServer({ port: 5000 }); 
 
-// Array to hold connected clients
 const clients = [];
 
-// Handle new WebSocket connections
 wss.on('connection', (socket) => {
   console.log('New client connected');
   
-  // Add the new client to the list of connected clients
   clients.push(socket);
 
-  // Handle incoming messages from clients
   socket.on('message', (message) => {
     console.log('Received message:', message);
     const text = message.toString('utf8');
     console.log('Received message:', text);
-    // Broadcast the message to all connected clients
     clients.forEach(client => {
-      if (client !== socket && client.readyState === client.OPEN) {
-        client.send(text); //message
+      if (client.readyState === client.OPEN) {
+        client.send(text); 
       }
     });
   });
 
-  // Handle client disconnection
   socket.on('close', () => {
     console.log('Client disconnected');
     const index = clients.indexOf(socket);
     if (index !== -1) {
-      clients.splice(index, 1); // Remove client from the list
+      clients.splice(index, 1); 
     }
   });
 });
@@ -48,7 +41,6 @@ wss.on('connection', (socket) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); 
 
-// Session middleware
 app.use(
   session({
     secret: 'secret', 
@@ -57,7 +49,6 @@ app.use(
   })
 );
 
-// CORS middleware
 app.use(
   cors({
     origin: 'https://messaging-app-1-isok.onrender.com', 
@@ -66,7 +57,6 @@ app.use(
   })
 );
 
-// Register route
 app.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -100,7 +90,6 @@ app.post('/register', async (req, res) => {
   );
 });
 
-// Login route
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
@@ -129,7 +118,6 @@ app.post('/login', (req, res) => {
   );
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

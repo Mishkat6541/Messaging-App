@@ -1,14 +1,12 @@
-/* Reset some basic styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body styles */
 body {
   font-family: 'Arial', sans-serif;
-  background: #f4f7f6; /* Light background for the entire page */
+  background: #f4f7f6;
   color: #333;
   height: 100vh;
   display: flex;
@@ -16,7 +14,6 @@ body {
   align-items: center;
 }
 
-/* Dashboard container */
 .dashboard {
   background: #ffffff;
   width: 90%;
@@ -31,11 +28,10 @@ body {
   gap: 20px;
 }
 
-/* Header */
 header {
   text-align: center;
   padding: 20px;
-  background: linear-gradient(135deg, #4caf50, #81c784); /* Green gradient */
+  background: linear-gradient(135deg, #4caf50, #81c784); 
   color: white;
   border-radius: 10px;
 }
@@ -47,7 +43,6 @@ header h1 {
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Dashboard sections */
 .dashboard-info, .dashboard-actions, .dashboard-messages {
   padding: 20px;
   background: #fafafa;
@@ -63,13 +58,11 @@ header h1 {
   font-weight: bold;
 }
 
-/* Dashboard Info Section */
 .dashboard-info p {
   font-size: 1rem;
   color: #666;
 }
 
-/* Quick actions list */
 .dashboard-actions ul {
   list-style-type: none;
   padding: 0;
@@ -91,10 +84,10 @@ header h1 {
 }
 
 .dashboard-actions button:hover {
-  background: #388e3c; /* Darker green on hover */
+  background: #388e3c; 
 }
 
-/* Messages section */
+
 .dashboard-messages {
   background: #e8f5e9;
   padding: 20px;
@@ -137,7 +130,7 @@ input {
 }
 
 input:focus {
-  border-color: #66bb6a; /* Focused green */
+  border-color: #66bb6a; 
 }
 
 button {
@@ -167,7 +160,6 @@ button:hover {
   color: #4caf50;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
