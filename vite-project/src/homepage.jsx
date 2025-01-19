@@ -116,4 +116,5 @@ const LoginRegister = () => {
   );
 };
 
+// hello person looking at my code :D
 export default LoginRegister;
